@@ -1,0 +1,18 @@
+{% extends 'login/layout/base.html' %}
+
+{% block label_page %} Pagina principal {% endblock label_page %}
+
+{% block body %} 
+
+<form method="post" novalidate>
+  {% csrf_token %}
+  <label for = 'username'>Username</label>
+  <input type="text" name=" username" id="username">
+
+  <label for = 'password'>Password</label>
+  <input type="password" name=" password" id="password">
+
+  <button type="submit">Login</button>
+</form>
+
+{% endblock body %}

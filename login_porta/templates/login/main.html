@@ -1,0 +1,15 @@
+{% extends 'login/layout/base.html' %}
+
+{% block label_page %} Pagina principal {% endblock label_page %}
+
+{% block body %}
+
+<a href="{% url 'login' %}">Login</a>
+<a href="{% url 'register' %}">Register</a>
+
+{% endblock body %}
+
+<!-- <a href="{% url 'index' %}">Index</a> -->
+<!-- <a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'main' %}">Main</a>
+<a href="{% url 'create' %}">Create</a> -->
