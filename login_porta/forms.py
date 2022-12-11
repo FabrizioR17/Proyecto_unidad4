@@ -9,7 +9,15 @@ class NuevoUsuario(UserCreationForm):
 
   class Meta:
     model = User
-    fields = ['username', 'first_name', 'last_name' , 'email', 'password', 'password2' ]
+    fields = ['username', 'first_name', 'last_name' , 'email', 'password1', 'password2' ]
+
+    widgets = {'username':forms.TextInput(attrs={'class':'form-control mb-3'}),
+              'first_name':forms.TextInput(attrs={'class':'form-control mb-3'}),
+              'last_name':forms.TextInput(attrs={'class':'form-control mb-3'}),
+              'email': forms.TextInput(attrs={'class':'form-control mb-3'}),
+              'password1': forms.TextInput(attrs={'class':'form-control mb-3'}),
+              'password2': forms.TextInput(attrs={'class':'form-control mb-3'})
+              }
 
   def save (self , commit = True):
     user = super(NuevoUsuario, self).save(commit=False)
@@ -18,3 +26,4 @@ class NuevoUsuario(UserCreationForm):
     if commit:
       user.save()
     return user
+  

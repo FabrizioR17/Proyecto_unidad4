@@ -2,11 +2,16 @@
 
 {% block label_page %} Registro {% endblock label_page %}
 
-{% block body %} 
+{% block content %} 
+<div class="formulario">
+  <div class="form-group">
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {{form.as_p}}
+      <button class="btn btn-success">Register</button>
+    </form>
+  </div>
+</div>
 
-<form method="post" novalidate>
-  {% csrf_token %}
-  {{form.as_p}}
-</form>
+{% endblock %}
 
-{% endblock body %}
