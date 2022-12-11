@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'login_porta.apps.LoginPortaConfig',
+    'crispy_forms',
+    'taggit'
 ]
 
 MIDDLEWARE = [

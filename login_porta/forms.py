@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User 
-
+from .models import Proyectos
 
 class NuevoUsuario(UserCreationForm):
   #ya trae usuario y 2 contras , solo le add el email
@@ -26,4 +26,17 @@ class NuevoUsuario(UserCreationForm):
     if commit:
       user.save()
     return user
-  
+
+
+class ProyForm(forms.ModelForm):
+
+    class Meta:
+        model = Proyectos
+        fields = ['foto', 'titulo' , 'descripcion','tags','url_proy']
+
+        widgets = {'foto':forms.TextInput(attrs={'class':'form-control mb-3'}),
+          'titulo':forms.TextInput(attrs={'class':'form-control mb-3'}),
+          'descripcion':forms.Textarea(attrs={'class':'form-control mb-3'}),
+          'tags': forms.TextInput(attrs={'class':'form-control mb-3'}),
+          'url_proy': forms.TextInput(attrs={'class':'form-control mb-3'})
+          }
