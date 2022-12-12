@@ -16,23 +16,18 @@
 
 <h2> Usuario: {{request.user.first_name}} {{request.user.last_name}}</h2>
 
-{% if request.user.is_authenticated %}
-
-
-<div class="proyectos">
-  <div class="form-group">
-    <form method="post" novalidate>
-      {% csrf_token %}
-      {{form.as_p}}
-      
-    </form>
-  </div>
-</div>
 
 
 
 
-{% endif%}
+<form method="post" novalidate>
+  {% csrf_token %}
+  {{form.as_p}}
+  
+  <button class="btn btn-primary" type="submit">Crear</button>
+</form>
+
+
 
 
 {% endblock %}

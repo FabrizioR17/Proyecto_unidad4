@@ -40,3 +40,10 @@ class ProyForm(forms.ModelForm):
           'tags': forms.TextInput(attrs={'class':'form-control mb-3'}),
           'url_proy': forms.TextInput(attrs={'class':'form-control mb-3'})
           }
+
+    def saveproj (self , commit = True):
+      proj = super(ProyForm, self).save(commit=False)
+
+      if commit:
+        proj.save()
+      return proj
