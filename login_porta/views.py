@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect 
 from django.views.generic import View, CreateView
 from .forms import NuevoUsuario,ProyForm
 from .models import Usuarios,Proyectos
 from django.contrib.auth import login, authenticate , logout
 #from django.contrib.auth.forms import AuthenticationForm
-#from django.contrib import messages
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin #para clases
 from django.contrib.auth.decorators import login_required #para funciones
 # Create your views here.
@@ -33,4 +33,24 @@ class RegistrarProy(CreateView):
     form.save
     Proyectos.objects.create(**form.cleaned_data)
     return redirect('login')
+
+
+def loginPage(request):
+
+  if request.method == 'POST':
+
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+
+    user = authenticate(request, username=username , password=password)
+
+    if user is not None:
+      login(request, user)
+      return redirect('loged')
+    
+    else:
+      messages.info(request, 'username or password is incorrect')
+
+  context = {}
+  return render(request, 'registration/login.html', context )
 
